@@ -76,6 +76,7 @@ RUN set -ex \
 COPY script/entrypoint.sh /entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
 
+RUN pip3 --default-timeout=10000 install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 RUN chown -R airflow: ${AIRFLOW_USER_HOME}
 
 EXPOSE 8080 5555 8793
